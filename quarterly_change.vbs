@@ -52,7 +52,7 @@ Sub quarter_pt1()
 
                 ' Print the Percent Change in each Table
                 If Q_Open_Price <> 0 Then
-                    ws.Range("K" & Table_Row).Value = (Quarterly_Change / Q_Open_Price) * 100
+                    ws.Range("K" & Table_Row).Value = (Quarterly_Change / Q_Open_Price)
                 Else
                     ws.Range("K" & Table_Row).Value = 0
                 End If
@@ -78,8 +78,12 @@ Sub quarter_pt1()
 
         Table_Row = 2
 
+        ' Autofit to display data
+        ws.Columns("A:L").AutoFit
+
     Next ws
 
 End Sub
+
 
 
