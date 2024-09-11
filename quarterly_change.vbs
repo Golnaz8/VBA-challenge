@@ -9,9 +9,10 @@ Sub quarter_pt1()
     Dim Q_Close_Price As Double
     Dim Quarterly_Change As Double
     Dim Counter As Long
-    
+    Dim Total_Stock_Volume As Double
     Table_Row = 2
     Counter = 0
+    Total_Stock_Volume = 0
 
     ' LOOP THROUGH ALL SHEETS
     For Each ws In Worksheets
@@ -40,6 +41,9 @@ Sub quarter_pt1()
                 ' Calculate the Quarterly Change
                 Quarterly_Change = Q_Close_Price - Q_Open_Price
 
+                ' Calculate the TOtal Stuck Volume
+                Total_Stock_Volume = Total_Stock_Volume + ws.Cells(i, 7).Value
+
                 ' Print the Ticker symbol in each Table
                 ws.Range("I" & Table_Row).Value = Ticker_Symbol
 
@@ -53,14 +57,21 @@ Sub quarter_pt1()
                     ws.Range("K" & Table_Row).Value = 0
                 End If
 
+                ' Print the Total Stock Volume in each Table
+                ws.Range("L" & Table_Row).Value = Total_Stock_Volume
+                
                 ' Add one to the table row
                 Table_Row = Table_Row + 1
 
                 ' Reset the Counter
                 Counter = 0
 
+                ' Reset the Total Stock Volume
+                Total_Stock_Volume = 0
+
             Else
                 Counter = Counter + 1
+                Total_Stock_Volume = Total_Stock_Volume + ws.Cells(i, 7).Value
             End If
 
         Next i
@@ -70,4 +81,5 @@ Sub quarter_pt1()
     Next ws
 
 End Sub
+
 
