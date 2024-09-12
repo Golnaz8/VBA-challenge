@@ -53,6 +53,8 @@ Sub quarter_pt1()
                 ' Print the Percent Change in each Table
                 If Q_Open_Price <> 0 Then
                     ws.Range("K" & Table_Row).Value = (Quarterly_Change / Q_Open_Price)
+                    ws.Range("K" & Table_Row).NumberFormat = "0.00%"
+
                 Else
                     ws.Range("K" & Table_Row).Value = 0
                 End If
