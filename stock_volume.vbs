@@ -49,6 +49,16 @@ Sub quarter_pt1()
 
                 ' Print the Quarterly Change in each Table
                 ws.Range("J" & Table_Row).Value = Quarterly_Change
+                ws.Range("J" & Table_Row).NumberFormat = "0.00"
+
+                ' Add color formatting to Quarterly Change column
+                If Quarterly_Change > 0 Then
+                    ws.Range("J" & Table_Row).Interior.ColorIndex = 4
+                ElseIf Quarterly_Change <0 Then
+                    ws.Range("J" & Table_Row).Interior.ColorIndex = 3
+                Else 
+                    ws.Range("J" & Table_Row).Interior.ColorIndex = 0
+                End If
 
                 ' Print the Percent Change in each Table
                 If Q_Open_Price <> 0 Then

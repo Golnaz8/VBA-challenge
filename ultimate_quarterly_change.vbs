@@ -61,6 +61,7 @@ Sub quarter_pt1()
 
                 ' Print the Quarterly Change in each Table
                 ws.Range("J" & Table_Row).Value = Quarterly_Change
+                ws.Range("J" & Table_Row).NumberFormat = "0.00"
 
                 If Quarterly_Change > 0 Then
                     ws.Range("J" & Table_Row).Interior.ColorIndex = 4
